@@ -1,0 +1,185 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Selected disadvantaged groups by Digital Ability score, 2024.",
+  "title": {
+    "text": "Digital disadvantage overlaps with social disadvantage",
+    "subtitle": "Selected groups by Digital Ability score, 2024; dashed line = national average 73.58"
+  },
+  "width": 620,
+  "height": {
+    "step": 34
+  },
+  "data": {
+    "values": [
+      {
+        "group": "Other education",
+        "category": "Education",
+        "score": 47.13
+      },
+      {
+        "group": "First Nations (very remote)",
+        "category": "First Nations",
+        "score": 56.79
+      },
+      {
+        "group": "Income Q1 (<$41.6k)",
+        "category": "Income",
+        "score": 58.58
+      },
+      {
+        "group": "First Nations (remote)",
+        "category": "First Nations",
+        "score": 61.45
+      },
+      {
+        "group": "Receives income support",
+        "category": "Income support",
+        "score": 62.34
+      },
+      {
+        "group": "Not in labour force",
+        "category": "Employment",
+        "score": 62.42
+      },
+      {
+        "group": "People with disability",
+        "category": "Disability",
+        "score": 62.53
+      },
+      {
+        "group": "Very Remote Australia",
+        "category": "Location",
+        "score": 63.59
+      },
+      {
+        "group": "First Nations (inner regional)",
+        "category": "First Nations",
+        "score": 64.49
+      },
+      {
+        "group": "Single person",
+        "category": "Household",
+        "score": 64.73
+      },
+      {
+        "group": "Rent from public housing authority",
+        "category": "Housing",
+        "score": 69.11
+      }
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "score": 73.58
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 130
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "title": "Digital Ability score",
+          "scale": {
+            "domain": [
+              40,
+              80
+            ]
+          }
+        },
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "title": null,
+          "sort": "x"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Group type"
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "type": "nominal",
+            "title": "Group"
+          },
+          {
+            "field": "category",
+            "type": "nominal",
+            "title": "Type"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Digital Ability",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 7,
+        "baseline": "middle",
+        "fontSize": 10
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": "x"
+        },
+        "text": {
+          "field": "score",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e5e7eb"
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}

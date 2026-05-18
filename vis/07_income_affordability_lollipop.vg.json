@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Affordability score by income quintile, 2024.",
+  "title": {
+    "text": "Affordability is the clearest income-based divide",
+    "subtitle": "Affordability score by household income group, 2024"
+  },
+  "width": 620,
+  "height": {
+    "step": 42
+  },
+  "data": {
+    "values": [
+      {
+        "income_group": "Income Q1 (<$41.6k)",
+        "affordability": 34.45
+      },
+      {
+        "income_group": "Income Q2 ($41.6k–$78k)",
+        "affordability": 60.26
+      },
+      {
+        "income_group": "Income Q3 ($78k–$104k)",
+        "affordability": 74.45
+      },
+      {
+        "income_group": "Income Q4 ($104k–$182k)",
+        "affordability": 88.13
+      },
+      {
+        "income_group": "Income Q5 ($182k+)",
+        "affordability": 99.23
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#cbd5e1"
+      },
+      "encoding": {
+        "y": {
+          "field": "income_group",
+          "type": "ordinal",
+          "title": null,
+          "sort": [
+            "Income Q1 (<$41.6k)",
+            "Income Q2 ($41.6k–$78k)",
+            "Income Q3 ($78k–$104k)",
+            "Income Q4 ($104k–$182k)",
+            "Income Q5 ($182k+)"
+          ]
+        },
+        "x": {
+          "value": 0
+        },
+        "x2": {
+          "field": "affordability",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 190
+      },
+      "encoding": {
+        "y": {
+          "field": "income_group",
+          "type": "ordinal",
+          "sort": [
+            "Income Q1 (<$41.6k)",
+            "Income Q2 ($41.6k–$78k)",
+            "Income Q3 ($78k–$104k)",
+            "Income Q4 ($104k–$182k)",
+            "Income Q5 ($182k+)"
+          ]
+        },
+        "x": {
+          "field": "affordability",
+          "type": "quantitative",
+          "title": "Affordability score",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "color": {
+          "field": "income_group",
+          "type": "nominal",
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "income_group",
+            "type": "ordinal",
+            "title": "Income group"
+          },
+          {
+            "field": "affordability",
+            "type": "quantitative",
+            "title": "Affordability",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "baseline": "middle",
+        "fontSize": 11
+      },
+      "encoding": {
+        "y": {
+          "field": "income_group",
+          "type": "ordinal",
+          "sort": [
+            "Income Q1 (<$41.6k)",
+            "Income Q2 ($41.6k–$78k)",
+            "Income Q3 ($78k–$104k)",
+            "Income Q4 ($104k–$182k)",
+            "Income Q5 ($182k+)"
+          ]
+        },
+        "x": {
+          "field": "affordability",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "affordability",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e5e7eb"
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}

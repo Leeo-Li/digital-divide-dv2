@@ -1,0 +1,157 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Digital Ability score by age group, 2024.",
+  "title": {
+    "text": "Digital ability falls sharply among older Australians",
+    "subtitle": "Digital Ability score by age group, 2024"
+  },
+  "width": 620,
+  "height": {
+    "step": 38
+  },
+  "data": {
+    "values": [
+      {
+        "age_group": "18–34",
+        "digital_ability": 88.93,
+        "highlight": "Highest"
+      },
+      {
+        "age_group": "35–44",
+        "digital_ability": 80.14,
+        "highlight": "Other"
+      },
+      {
+        "age_group": "45–54",
+        "digital_ability": 74.12,
+        "highlight": "Other"
+      },
+      {
+        "age_group": "55–64",
+        "digital_ability": 67.59,
+        "highlight": "Other"
+      },
+      {
+        "age_group": "65–74",
+        "digital_ability": 58.11,
+        "highlight": "Other"
+      },
+      {
+        "age_group": "75+",
+        "digital_ability": 41.52,
+        "highlight": "Lowest"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4
+      },
+      "encoding": {
+        "x": {
+          "field": "digital_ability",
+          "type": "quantitative",
+          "title": "Digital Ability score",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "title": null,
+          "sort": [
+            "18–34",
+            "35–44",
+            "45–54",
+            "55–64",
+            "65–74",
+            "75+"
+          ]
+        },
+        "color": {
+          "field": "highlight",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Highest",
+              "Other",
+              "Lowest"
+            ],
+            "range": [
+              "#1d4ed8",
+              "#93c5fd",
+              "#f97316"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "digital_ability",
+            "type": "quantitative",
+            "title": "Digital Ability",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "baseline": "middle",
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {
+          "field": "digital_ability",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "18–34",
+            "35–44",
+            "45–54",
+            "55–64",
+            "65–74",
+            "75+"
+          ]
+        },
+        "text": {
+          "field": "digital_ability",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e5e7eb"
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}

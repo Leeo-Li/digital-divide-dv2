@@ -1,0 +1,215 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart comparing ADII score between Metro and Regional Australia.",
+  "title": {
+    "text": "Metro Australia scores higher than Regional Australia",
+    "subtitle": "ADII score comparison, 2024"
+  },
+  "width": 620,
+  "height": 130,
+  "data": {
+    "values": [
+      {
+        "comparison": "Metro vs Regional",
+        "region": "Metro",
+        "score": 75.49
+      },
+      {
+        "comparison": "Metro vs Regional",
+        "region": "Regional",
+        "score": 69.57
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#94a3b8"
+      },
+      "encoding": {
+        "y": {
+          "field": "comparison",
+          "type": "nominal",
+          "title": null
+        },
+        "x": {
+          "aggregate": "min",
+          "field": "score",
+          "type": "quantitative",
+          "title": "ADII score",
+          "scale": {
+            "domain": [
+              65,
+              78
+            ]
+          }
+        },
+        "x2": {
+          "aggregate": "max",
+          "field": "score"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 220
+      },
+      "encoding": {
+        "y": {
+          "field": "comparison",
+          "type": "nominal",
+          "title": null
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "title": null
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "type": "nominal",
+            "title": "Region"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "ADII score",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -24,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "y": {
+          "field": "comparison",
+          "type": "nominal"
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "region",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": 24,
+        "fontSize": 12
+      },
+      "encoding": {
+        "y": {
+          "field": "comparison",
+          "type": "nominal"
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "score",
+          "type": "quantitative",
+          "format": ".2f"
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "score": 73.56,
+            "label": "National average 73.56"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "score": 73.56,
+            "y": "Metro vs Regional",
+            "label": "National average"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": 48,
+        "fontSize": 11,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e5e7eb"
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}

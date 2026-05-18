@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "National digital inclusion dimensions in Australia, 2024",
+  "title": {
+    "text": "National digital inclusion looks relatively strong",
+    "subtitle": "Access, affordability and digital ability all score around the 70s in 2024"
+  },
+  "width": 520,
+  "height": {"step": 50},
+  "data": {
+    "values": [
+      {"dimension": "Access", "score": 76.82},
+      {"dimension": "Affordability", "score": 70.25},
+      {"dimension": "Digital Ability", "score": 73.6}
+    ]
+  },
+  "mark": {"type": "bar", "cornerRadiusEnd": 4, "height": {"band": 0.5}},
+  "encoding": {
+    "y": {
+      "field": "dimension",
+      "type": "nominal",
+      "title": null,
+      "sort": ["Access", "Digital Ability", "Affordability"],
+      "scale": {"padding": 0.25},
+      "axis": {
+        "grid": false,
+        "domain": false,
+        "ticks": false,
+        "labelAlign": "left",
+        "labelBaseline": "middle",
+        "labelPadding": -5,
+        "labelOffset": -15
+      }
+    },
+    "x": {
+      "field": "score",
+      "type": "quantitative",
+      "title": "Score out of 100",
+      "scale": {"domain": [0, 100]},
+      "axis": {"grid": true}
+    },
+    "tooltip": [
+      {"field": "dimension", "type": "nominal", "title": "Dimension"},
+      {
+        "field": "score",
+        "type": "quantitative",
+        "title": "Score",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {}
+}

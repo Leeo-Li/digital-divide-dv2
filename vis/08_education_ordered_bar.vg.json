@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Digital Ability score by education level, 2024.",
+  "title": {
+    "text": "Education level is linked to digital ability",
+    "subtitle": "Digital Ability score by education level, 2024"
+  },
+  "width": 620,
+  "height": {
+    "step": 42
+  },
+  "data": {
+    "values": [
+      {
+        "education": "Other education",
+        "digital_ability": 47.13
+      },
+      {
+        "education": "Did not complete secondary school",
+        "digital_ability": 54.44
+      },
+      {
+        "education": "Completed secondary school",
+        "digital_ability": 70.43
+      },
+      {
+        "education": "Certificate / diploma",
+        "digital_ability": 73.57
+      },
+      {
+        "education": "Bachelor and above",
+        "digital_ability": 82.71
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4
+      },
+      "encoding": {
+        "x": {
+          "field": "digital_ability",
+          "type": "quantitative",
+          "title": "Digital Ability score",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "y": {
+          "field": "education",
+          "type": "nominal",
+          "title": null,
+          "sort": "x"
+        },
+        "color": {
+          "field": "digital_ability",
+          "type": "quantitative",
+          "title": "Score",
+          "scale": {
+            "scheme": "blues"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "education",
+            "type": "nominal",
+            "title": "Education"
+          },
+          {
+            "field": "digital_ability",
+            "type": "quantitative",
+            "title": "Digital Ability",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "baseline": "middle",
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {
+          "field": "digital_ability",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "education",
+          "type": "nominal",
+          "sort": "x"
+        },
+        "text": {
+          "field": "digital_ability",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e5e7eb"
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}

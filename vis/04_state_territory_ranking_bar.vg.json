@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "ADII score ranking by Australian state and territory, 2024.",
+  "title": {
+    "text": "ACT ranks highest, Tasmania lowest",
+    "subtitle": "ADII score by state and territory, 2024"
+  },
+  "width": 620,
+  "height": {
+    "step": 34
+  },
+  "data": {
+    "values": [
+      {
+        "state_code": "ACT",
+        "state_name": "Australian Capital Territory",
+        "adii_score": 79.52,
+        "highlight": "Highest"
+      },
+      {
+        "state_code": "VIC",
+        "state_name": "Victoria",
+        "adii_score": 74.06,
+        "highlight": "Other"
+      },
+      {
+        "state_code": "NSW",
+        "state_name": "New South Wales",
+        "adii_score": 73.98,
+        "highlight": "Other"
+      },
+      {
+        "state_code": "WA",
+        "state_name": "Western Australia",
+        "adii_score": 73.89,
+        "highlight": "Other"
+      },
+      {
+        "state_code": "QLD",
+        "state_name": "Queensland",
+        "adii_score": 72.88,
+        "highlight": "Other"
+      },
+      {
+        "state_code": "NT",
+        "state_name": "Northern Territory",
+        "adii_score": 72.47,
+        "highlight": "Other"
+      },
+      {
+        "state_code": "SA",
+        "state_name": "South Australia",
+        "adii_score": 71.3,
+        "highlight": "Other"
+      },
+      {
+        "state_code": "TAS",
+        "state_name": "Tasmania",
+        "adii_score": 69.38,
+        "highlight": "Lowest"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4
+      },
+      "encoding": {
+        "x": {
+          "field": "adii_score",
+          "type": "quantitative",
+          "title": "ADII score",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "y": {
+          "field": "state_name",
+          "type": "nominal",
+          "title": null,
+          "sort": "-x"
+        },
+        "color": {
+          "field": "highlight",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Highest",
+              "Other",
+              "Lowest"
+            ],
+            "range": [
+              "#1d4ed8",
+              "#93c5fd",
+              "#f97316"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state_name",
+            "type": "nominal",
+            "title": "State/Territory"
+          },
+          {
+            "field": "adii_score",
+            "type": "quantitative",
+            "title": "ADII score",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "baseline": "middle",
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {
+          "field": "adii_score",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "state_name",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "text": {
+          "field": "adii_score",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e5e7eb"
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}

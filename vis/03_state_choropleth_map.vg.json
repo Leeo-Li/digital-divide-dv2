@@ -1,0 +1,132 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "State and territory choropleth map of digital inclusion in Australia, 2024",
+  "title": {
+    "text": "Digital inclusion varies across states and territories",
+    "subtitle": "Australian Digital Inclusion Index score, 2024"
+  },
+  "width": 720,
+  "height": 460,
+  "data": {
+    "url": "data/AUS_STATE_MAP_FINAL.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.properties.STATE_NAME_2021 != 'Other Territories' && datum.properties.STATE_NAME_2021 != 'Outside Australia'"
+    },
+    {
+      "lookup": "properties.STATE_NAME_2021",
+      "from": {
+        "data": {
+          "values": [
+            {
+              "state_name": "Australian Capital Territory",
+              "state_code": "ACT",
+              "adii_score": 79.52
+            },
+            {
+              "state_name": "Victoria",
+              "state_code": "VIC",
+              "adii_score": 74.06
+            },
+            {
+              "state_name": "New South Wales",
+              "state_code": "NSW",
+              "adii_score": 73.98
+            },
+            {
+              "state_name": "Western Australia",
+              "state_code": "WA",
+              "adii_score": 73.89
+            },
+            {
+              "state_name": "Queensland",
+              "state_code": "QLD",
+              "adii_score": 72.88
+            },
+            {
+              "state_name": "Northern Territory",
+              "state_code": "NT",
+              "adii_score": 72.47
+            },
+            {
+              "state_name": "South Australia",
+              "state_code": "SA",
+              "adii_score": 71.3
+            },
+            {
+              "state_name": "Tasmania",
+              "state_code": "TAS",
+              "adii_score": 69.38
+            }
+          ]
+        },
+        "key": "state_name",
+        "fields": [
+          "state_code",
+          "adii_score"
+        ]
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 550,
+    "translate": [360, 240]
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "adii_score",
+      "type": "quantitative",
+      "title": "ADII Score",
+      "scale": {
+        "scheme": "blues",
+        "domain": [
+          68,
+          80
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STATE_NAME_2021",
+        "type": "nominal",
+        "title": "State/Territory"
+      },
+      {
+        "field": "state_code",
+        "type": "nominal",
+        "title": "Code"
+      },
+      {
+        "field": "adii_score",
+        "type": "quantitative",
+        "title": "ADII Score",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "anchor": "start",
+      "fontSize": 16,
+      "subtitleFontSize": 12
+    },
+    "legend": {
+      "orient": "right"
+    }
+  }
+}

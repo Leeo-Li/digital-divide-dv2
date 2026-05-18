@@ -1,0 +1,171 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Access and Digital Ability scores over time from ADII exports.",
+  "title": {
+    "text": "Access and digital ability improved over time",
+    "subtitle": "National scores, 2020–2024. 2023 is not included in the exported ADII data."
+  },
+  "width": 620,
+  "height": 320,
+  "data": {
+    "values": [
+      {
+        "year": 2020,
+        "measure": "Access",
+        "score": 69.42
+      },
+      {
+        "year": 2020,
+        "measure": "Digital Ability",
+        "score": 63.59
+      },
+      {
+        "year": 2021,
+        "measure": "Access",
+        "score": 70.02
+      },
+      {
+        "year": 2021,
+        "measure": "Digital Ability",
+        "score": 64.38
+      },
+      {
+        "year": 2022,
+        "measure": "Access",
+        "score": 71.97
+      },
+      {
+        "year": 2022,
+        "measure": "Digital Ability",
+        "score": 64.85
+      },
+      {
+        "year": 2024,
+        "measure": "Access",
+        "score": 76.82
+      },
+      {
+        "year": 2024,
+        "measure": "Digital Ability",
+        "score": 73.6
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": false,
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year",
+          "sort": [
+            2020,
+            2021,
+            2022,
+            2024
+          ]
+        },
+        "y": {
+          "field": "score",
+          "type": "quantitative",
+          "title": "Score out of 100",
+          "scale": {
+            "domain": [
+              55,
+              85
+            ]
+          }
+        },
+        "color": {
+          "field": "measure",
+          "type": "nominal",
+          "title": "Measure"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "measure",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Score",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 90
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            2020,
+            2021,
+            2022,
+            2024
+          ]
+        },
+        "y": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "measure",
+          "type": "nominal",
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "measure",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Score",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e5e7eb"
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "start"
+    }
+  }
+}
