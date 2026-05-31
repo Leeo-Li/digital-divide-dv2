@@ -1,0 +1,262 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Diverging profile showing each ADII dimension's deviation from the national ADII score.",
+  "title": {
+    "text": "Affordability pulls the national profile below balance",
+    "subtitle": "Difference from the national ADII score of 73.56; right is stronger, left is weaker."
+  },
+  "width": "container",
+  "height": 210,
+  "data": {
+    "values": [
+      {
+        "dimension": "Access",
+        "score": 76.82,
+        "difference": 3.26,
+        "zero": 0,
+        "status": "Above national score",
+        "label": "+3.26"
+      },
+      {
+        "dimension": "Digital Ability",
+        "score": 73.6,
+        "difference": 0.04,
+        "zero": 0,
+        "status": "Near national score",
+        "label": "+0.04"
+      },
+      {
+        "dimension": "Affordability",
+        "score": 70.25,
+        "difference": -3.31,
+        "zero": 0,
+        "status": "Below national score",
+        "label": "-3.31"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 2,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "dimension": "Access",
+            "difference": 0,
+            "label": "National ADII baseline (0)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -28,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "difference",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -4,
+              4
+            ]
+          }
+        },
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": [
+            "Access",
+            "Digital Ability",
+            "Affordability"
+          ]
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 5,
+        "color": "#a8b7c7"
+      },
+      "encoding": {
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "title": null,
+          "sort": [
+            "Access",
+            "Digital Ability",
+            "Affordability"
+          ],
+          "axis": {
+            "labelLimit": 180
+          }
+        },
+        "x": {
+          "field": "zero",
+          "type": "quantitative",
+          "title": "Difference from national ADII score",
+          "scale": {
+            "domain": [
+              -4,
+              4
+            ]
+          },
+          "axis": {
+            "tickCount": 9,
+            "grid": true
+          }
+        },
+        "x2": {
+          "field": "difference"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 300,
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "difference",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": [
+            "Access",
+            "Digital Ability",
+            "Affordability"
+          ]
+        },
+        "color": {
+          "field": "status",
+          "type": "nominal",
+          "title": "Position vs national score",
+          "scale": {
+            "domain": [
+              "Above national score",
+              "Near national score",
+              "Below national score"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#93c5fd",
+              "#d86f2a"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "dimension",
+            "type": "nominal",
+            "title": "Dimension"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Score",
+            "format": ".2f"
+          },
+          {
+            "field": "difference",
+            "type": "quantitative",
+            "title": "Difference from national ADII",
+            "format": "+.2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "baseline": "middle",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#17212b"
+      },
+      "encoding": {
+        "x": {
+          "field": "difference",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": [
+            "Access",
+            "Digital Ability",
+            "Affordability"
+          ]
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "gridColor": "#dbe4ee",
+      "labelLimit": 320
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
+    },
+    "title": {
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    }
+  }
+}

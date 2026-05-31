@@ -1,0 +1,321 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small-multiple gap chart comparing highest and lowest groups across age, income and education barriers.",
+  "title": {
+    "text": "The biggest gap is not only about age or education",
+    "subtitle": "Age and education use Digital Ability; income uses Affordability. Each panel compares the highest and lowest group."
+  },
+  "data": {
+    "values": [
+      {
+        "barrier": "Age",
+        "group": "18-34",
+        "score": 88.93,
+        "role": "Highest group"
+      },
+      {
+        "barrier": "Age",
+        "group": "75+",
+        "score": 41.52,
+        "role": "Lowest group"
+      },
+      {
+        "barrier": "Age",
+        "group": "Gap",
+        "score": 65.23,
+        "role": "Gap label",
+        "gap_label": "47.41 point gap"
+      },
+      {
+        "barrier": "Income",
+        "group": "Income Q5 ($182k+)",
+        "score": 99.23,
+        "role": "Highest group"
+      },
+      {
+        "barrier": "Income",
+        "group": "Income Q1 (<$41.6k)",
+        "score": 34.45,
+        "role": "Lowest group"
+      },
+      {
+        "barrier": "Income",
+        "group": "Gap",
+        "score": 66.84,
+        "role": "Gap label",
+        "gap_label": "64.78 point gap"
+      },
+      {
+        "barrier": "Education",
+        "group": "Bachelor and above",
+        "score": 82.71,
+        "role": "Highest group"
+      },
+      {
+        "barrier": "Education",
+        "group": "Other education",
+        "score": 47.13,
+        "role": "Lowest group"
+      },
+      {
+        "barrier": "Education",
+        "group": "Gap",
+        "score": 64.92,
+        "role": "Gap label",
+        "gap_label": "35.58 point gap"
+      }
+    ]
+  },
+  "facet": {
+    "field": "barrier",
+    "type": "nominal",
+    "columns": 3,
+    "sort": ["Age", "Income", "Education"],
+    "header": {
+      "title": null,
+      "labelFont": "Space Grotesk",
+      "labelFontSize": 16,
+      "labelFontWeight": "bold",
+      "labelColor": "#17212b"
+    }
+  },
+  "spec": {
+    "width": 285,
+    "height": 150,
+    "layer": [
+      {
+        "transform": [
+          {
+            "filter": "datum.role != 'Gap label'"
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "strokeWidth": 4,
+          "color": "#a8b7c7"
+        },
+        "encoding": {
+          "x": {
+            "aggregate": "min",
+            "field": "score",
+            "type": "quantitative",
+            "title": "Score out of 100",
+            "scale": {
+              "domain": [30, 100]
+            },
+            "axis": {
+              "tickCount": 6
+            }
+          },
+          "x2": {
+            "aggregate": "max",
+            "field": "score"
+          },
+          "y": {
+            "value": 78
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.role != 'Gap label'"
+          }
+        ],
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "size": 230,
+          "stroke": "white",
+          "strokeWidth": 2
+        },
+        "encoding": {
+          "x": {
+            "field": "score",
+            "type": "quantitative",
+            "scale": {
+              "domain": [30, 100]
+            }
+          },
+          "y": {
+            "value": 78
+          },
+          "color": {
+            "field": "role",
+            "type": "nominal",
+            "title": "Group marker",
+            "scale": {
+              "domain": ["Lowest group", "Highest group"],
+              "range": ["#d86f2a", "#2f6fa7"]
+            }
+          },
+          "tooltip": [
+            {
+              "field": "barrier",
+              "type": "nominal",
+              "title": "Barrier"
+            },
+            {
+              "field": "group",
+              "type": "nominal",
+              "title": "Group"
+            },
+            {
+              "field": "score",
+              "type": "quantitative",
+              "title": "Score",
+              "format": ".2f"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.role != 'Gap label'"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "dy": -28,
+          "fontSize": 11,
+          "fontWeight": "bold"
+        },
+        "encoding": {
+          "x": {
+            "field": "score",
+            "type": "quantitative",
+            "scale": {
+              "domain": [30, 100]
+            }
+          },
+          "y": {
+            "value": 78
+          },
+          "text": {
+            "field": "group",
+            "type": "nominal"
+          },
+          "color": {
+            "field": "role",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": ["Lowest group", "Highest group"],
+              "range": ["#d86f2a", "#2f6fa7"]
+            }
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.role != 'Gap label'"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "dy": 28,
+          "fontSize": 11
+        },
+        "encoding": {
+          "x": {
+            "field": "score",
+            "type": "quantitative",
+            "scale": {
+              "domain": [30, 100]
+            }
+          },
+          "y": {
+            "value": 78
+          },
+          "text": {
+            "field": "score",
+            "type": "quantitative",
+            "format": ".2f"
+          },
+          "color": {
+            "field": "role",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": ["Lowest group", "Highest group"],
+              "range": ["#d86f2a", "#2f6fa7"]
+            }
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.role == 'Gap label'"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "dy": 62,
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "color": "#17212b"
+        },
+        "encoding": {
+          "x": {
+            "field": "score",
+            "type": "quantitative",
+            "scale": {
+              "domain": [30, 100]
+            }
+          },
+          "y": {
+            "value": 78
+          },
+          "text": {
+            "field": "gap_label",
+            "type": "nominal"
+          }
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "color": "shared"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "gridColor": "#dbe4ee",
+      "labelLimit": 240
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
+    },
+    "title": {
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    }
+  }
+}

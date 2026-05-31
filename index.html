@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A Vega-Lite data story about Australia's digital divide in 2024." />
   <title>Who Is Left Behind in Australia's Digital Life?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -13,71 +17,188 @@
   <header class="hero">
     <p class="eyebrow">Australia's Digital Divide · 2024 Snapshot</p>
     <h1>Who Is Left Behind in Australia's Digital Life?</h1>
-    <p class="hero-text">Digital inclusion is not only about internet access. It is also about whether people can afford digital services and use them confidently.</p>
+    <p class="hero-text">Digital inclusion is not only about internet access. In the Australian Digital Inclusion Index (ADII), a higher score out of 100 means better access, affordability and digital ability. This story explores who is left behind through four dimensions: the national picture, place-based gaps, demographic differences and risk drivers.</p>
     <div class="kpi-row">
-      <div class="kpi-card"><span class="kpi-value">73.56</span><span class="kpi-label">2024 ADII Score</span></div>
-      <div class="kpi-card"><span class="kpi-value">76.82</span><span class="kpi-label">Access</span></div>
-      <div class="kpi-card"><span class="kpi-value">70.25</span><span class="kpi-label">Affordability</span></div>
-      <div class="kpi-card"><span class="kpi-value">73.60</span><span class="kpi-label">Digital Ability</span></div>
+      <div class="kpi-card"><span class="kpi-value">73.56</span><span class="kpi-label">National ADII score</span><span class="kpi-note">Australia is relatively included overall.</span></div>
+      <div class="kpi-card"><span class="kpi-value">6.57</span><span class="kpi-label">Access-affordability gap</span><span class="kpi-note">Affordability is the weakest national dimension.</span></div>
+      <div class="kpi-card"><span class="kpi-value">5.92</span><span class="kpi-label">Metro-regional gap</span><span class="kpi-note">Place still changes digital inclusion outcomes.</span></div>
+      <div class="kpi-card"><span class="kpi-value">34.45</span><span class="kpi-label">Lowest affordability score</span><span class="kpi-note">Income Q1 households face the strongest cost barrier.</span></div>
     </div>
   </header>
 
   <main>
-    <section>
+    <section class="story-section">
       <div class="section-copy">
         <p class="section-number">Section 1</p>
         <h2>Australia is digital, but not equally digital</h2>
-        <p>Australia's overall digital inclusion score is relatively high, but the three dimensions are not equal. Affordability remains weaker than access.</p>
+        <p>Australia's overall score is high, but the three dimensions are not equal. Access is strongest, while affordability is the first warning sign in the story.</p>
       </div>
-      <div class="chart-grid two">
-        <div class="chart-card"><div id="dimension_bar"></div></div>
-        <div class="chart-card"><div id="trend_line"></div></div>
+      <div class="chart-card">
+        <div id="dimension_bar"></div>
+        <p class="chart-note">All three dimensions are scored out of 100. Orange marks the weakest dimension, showing affordability sits 6.57 points below access.</p>
       </div>
     </section>
 
-    <section>
+    <section class="story-section">
       <div class="section-copy">
         <p class="section-number">Section 2</p>
-        <h2>Location still matters</h2>
-        <p>Digital inclusion differs across place. The map shows state and territory differences, while the metro-regional comparison highlights a clear location gap.</p>
+        <h2>The national profile bends around affordability</h2>
+        <p>This custom profile view shows each dimension as a difference from the national ADII score. It removes the wasted 0-100 scale and makes the main imbalance clearer: affordability sits below the overall index while access sits above it.</p>
       </div>
-      <div class="chart-grid one">
-        <div class="chart-card wide"><div id="state_map"></div></div>
-      </div>
-      <div class="chart-grid two">
-        <div class="chart-card"><div id="state_ranking"></div></div>
-        <div class="chart-card"><div id="metro_regional_dumbbell"></div></div>
+      <div class="chart-card compact-chart">
+        <div id="dimension_profile"></div>
+        <p class="chart-note">The dashed vertical line is the national ADII baseline. Points to the right are above the overall score; points to the left are below it.</p>
       </div>
     </section>
 
-    <section>
+    <section class="story-section">
       <div class="section-copy">
         <p class="section-number">Section 3</p>
-        <h2>The divide becomes sharper across people</h2>
-        <p>The digital divide is not only geographic. It is also shaped by age, income, education and social disadvantage.</p>
+        <h2>Access and ability have improved over time</h2>
+        <p>From 2020 to 2024, both access and digital ability improved. The improvement matters, but it does not remove the affordability and population gaps shown later.</p>
       </div>
-      <div class="chart-grid two">
-        <div class="chart-card"><div id="age_bar"></div></div>
-        <div class="chart-card"><div id="income_lollipop"></div></div>
-        <div class="chart-card"><div id="education_bar"></div></div>
-        <div class="chart-card"><div id="social_groups_dotplot"></div></div>
+      <div class="chart-card">
+        <div id="trend_line"></div>
+        <p class="chart-note">Endpoint labels show the 2024 scores. The missing 2023 point is intentional because it is not included in the exported ADII data.</p>
       </div>
     </section>
 
-    <section>
+    <section class="story-section">
       <div class="section-copy">
         <p class="section-number">Section 4</p>
-        <h2>So who is most at risk of being left behind?</h2>
-        <p>The people most at risk are not defined by one factor only. Digital exclusion is strongest where location, low income, older age, lower education and social disadvantage overlap.</p>
+        <h2>Location still matters</h2>
+        <p>Digital inclusion differs across place. The map keeps the original geography and shows how state and territory scores vary across Australia.</p>
       </div>
-      <div class="chart-grid one">
-        <div class="chart-card wide"><div id="at_risk_ranking"></div></div>
+      <div class="chart-card wide map-card">
+        <div id="state_map"></div>
+        <p class="chart-note">Darker blue means a higher ADII score. The map keeps the original geography and uses the legend scale from 68 to 80.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 5</p>
+        <h2>The state gap has clear leaders and laggards</h2>
+        <p>The ranking makes the map easier to compare. The ACT has the highest score, while Tasmania sits at the bottom of the state and territory list.</p>
+      </div>
+      <div class="chart-card">
+        <div id="state_ranking"></div>
+        <p class="chart-note">The dashed vertical line marks the national ADII average of 73.56. Blue highlights the highest state or territory and orange highlights the lowest.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 6</p>
+        <h2>Regional Australia is still below metro Australia</h2>
+        <p>The metro-regional comparison shows that location is not only a state-level issue. Regional Australia remains below the national average.</p>
+      </div>
+      <div class="chart-card compact-chart">
+        <div id="metro_regional_dumbbell"></div>
+        <p class="chart-note">The dashed vertical line marks the national ADII average of 73.56. Regional Australia sits below both metro Australia and the national average.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 7</p>
+        <h2>Age turns the divide into an ability problem</h2>
+        <p>Digital ability drops steadily with age. A line chart makes the downward trajectory clearer than another ordered bar chart.</p>
+      </div>
+      <div class="chart-card">
+        <div id="age_bar"></div>
+        <p class="chart-note">The dashed horizontal line marks the national Digital Ability average of 73.60. The 75+ group is the lowest point on the age curve.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 8</p>
+        <h2>Affordability is the clearest income divide</h2>
+        <p>Income is where affordability becomes most visible. The income ladder shows a steep climb from the lowest-income group to the highest-income group.</p>
+      </div>
+      <div class="chart-card">
+        <div id="income_lollipop"></div>
+        <p class="chart-note">The dashed horizontal line marks the national affordability average of 70.25. Q1 is far below the line, while Q4 and Q5 are well above it.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 9</p>
+        <h2>Education is linked to digital confidence</h2>
+        <p>Education level is strongly connected to digital ability. The dot plot shows which education groups sit below the national Digital Ability score without using another bar chart.</p>
+      </div>
+      <div class="chart-card">
+        <div id="education_bar"></div>
+        <p class="chart-note">The dashed vertical line marks the national Digital Ability average of 73.60. Education groups left of the line are below the national ability score.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 10</p>
+        <h2>Three barriers show three different gaps</h2>
+        <p>This small-multiple gap view compares the highest and lowest groups for age, income and education. The panels use different measures: age and education use Digital Ability, while income uses Affordability.</p>
+      </div>
+      <div class="chart-card compact-chart">
+        <div id="demographic_gap_multiples"></div>
+        <p class="chart-note">These are not three identical measures. Age = Digital Ability, income = Affordability, and education = Digital Ability; each gap compares the highest and lowest group within that measure.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 11</p>
+        <h2>Social disadvantage overlaps with digital disadvantage</h2>
+        <p>The divide is not caused by one factor only. Lower education, First Nations remoteness, low income, disability and housing disadvantage all appear below the national ability average.</p>
+      </div>
+      <div class="chart-card tall-chart">
+        <div id="social_groups_dotplot"></div>
+        <p class="chart-note">The dashed vertical line marks the national Digital Ability average of 73.60. Every listed group falls below that benchmark.</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="section-copy">
+        <p class="section-number">Section 12</p>
+        <h2>So who is most at risk of being left behind?</h2>
+        <p>The most at-risk group is Income Q1, because it has the largest shortfall: 35.8 points below the national affordability average. The 75+ group and people with lower education are also highly exposed, mainly through digital ability barriers.</p>
+      </div>
+      <div class="chart-card tall-chart">
+        <div id="at_risk_ranking"></div>
+        <p class="chart-note">The centre dashed line means no gap from the relevant national average. Left shows affordability pressure; right shows Digital Ability pressure. Income Q1 is the clearest overall risk group.</p>
+      </div>
+    </section>
+
+    <section class="summary-section" aria-labelledby="summary-title">
+      <p class="section-number">Summary</p>
+      <h2 id="summary-title">The divide is not one problem</h2>
+      <p class="summary-lead">Australia's digital divide is strongest where affordability pressure, lower digital ability and social disadvantage overlap. Access has improved, but digital inclusion still depends on income, age, education, housing and location.</p>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="summary-kicker">Main barrier</span>
+          <strong>Affordability is the clearest warning sign.</strong>
+          <p>It is the weakest national dimension and the clearest divider between low-income and high-income households.</p>
+        </div>
+        <div class="summary-item">
+          <span class="summary-kicker">Most at-risk groups</span>
+          <strong>Risk concentrates among low-income, older and lower-education groups.</strong>
+          <p>These groups sit below national benchmarks for different reasons: cost pressure affects some groups, while ability barriers affect others.</p>
+        </div>
+        <div class="summary-item">
+          <span class="summary-kicker">Key takeaway</span>
+          <strong>A single national score hides real-world gaps.</strong>
+          <p>Digital inclusion looks stronger at the national level than it does for many specific groups. Location, income, age, education and social disadvantage reveal who is more likely to be left behind.</p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Data: Australian Digital Inclusion Index and ABS ASGS boundary data. Visualisations built with Vega-Lite.</p>
+    <p><strong>Data sources:</strong> Thomas et al. (2025), Measuring Australia's Digital Divide: 2025 Australian Digital Inclusion Index, using 2024 wave scores. Data exported from the ADII interactive dashboards.  Australian Bureau of Statistics, Australian Statistical Geography Standard (ASGS) Edition 3 State and Territory digital boundary files.</p>
+    <p><strong>Author:</strong> Zhichun Li · <strong>Date:</strong> May 2026</p>
+    <p><strong>AI acknowledgement:</strong> Generative AI was used to assist with wording, debugging and visualisation refinement. Final data selection, interpretation and implementation were reviewed by the author.</p>
   </footer>
 
   <script src="vega_lite_vis.js"></script>

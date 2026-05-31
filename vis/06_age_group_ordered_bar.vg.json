@@ -1,83 +1,179 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Digital Ability score by age group, 2024.",
+  "description": "Line and point chart showing Digital Ability score by age group, 2024.",
   "title": {
-    "text": "Digital ability falls sharply among older Australians",
-    "subtitle": "Digital Ability score by age group, 2024"
+    "text": "Digital ability steadily falls with age",
+    "subtitle": "Digital Ability score by age group, 2024. The oldest group is 47.41 points below 18-34."
   },
-  "width": 620,
-  "height": {
-    "step": 38
-  },
+  "width": "container",
+  "height": 300,
   "data": {
     "values": [
       {
-        "age_group": "18–34",
+        "age_group": "18-34",
         "digital_ability": 88.93,
-        "highlight": "Highest"
+        "marker": "Highest"
       },
       {
-        "age_group": "35–44",
+        "age_group": "35-44",
         "digital_ability": 80.14,
-        "highlight": "Other"
+        "marker": "Other"
       },
       {
-        "age_group": "45–54",
+        "age_group": "45-54",
         "digital_ability": 74.12,
-        "highlight": "Other"
+        "marker": "Other"
       },
       {
-        "age_group": "55–64",
+        "age_group": "55-64",
         "digital_ability": 67.59,
-        "highlight": "Other"
+        "marker": "Other"
       },
       {
-        "age_group": "65–74",
+        "age_group": "65-74",
         "digital_ability": 58.11,
-        "highlight": "Other"
+        "marker": "Other"
       },
       {
         "age_group": "75+",
         "digital_ability": 41.52,
-        "highlight": "Lowest"
+        "marker": "Lowest"
       }
     ]
   },
   "layer": [
     {
+      "data": {
+        "values": [
+          {
+            "average": 73.6
+          }
+        ]
+      },
       "mark": {
-        "type": "bar",
-        "cornerRadiusEnd": 4
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 2,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "y": {
+          "field": "average",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "age_group": "45-54",
+            "average": 73.6,
+            "label": "Digital Ability average 73.60"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -12,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#64748b"
       },
       "encoding": {
         "x": {
-          "field": "digital_ability",
-          "type": "quantitative",
-          "title": "Digital Ability score",
-          "scale": {
-            "domain": [
-              0,
-              100
-            ]
-          }
-        },
-        "y": {
           "field": "age_group",
           "type": "ordinal",
-          "title": null,
           "sort": [
-            "18–34",
-            "35–44",
-            "45–54",
-            "55–64",
-            "65–74",
+            "18-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
             "75+"
           ]
         },
+        "y": {
+          "field": "average",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeWidth": 4,
+        "color": "#2f6fa7"
+      },
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "18-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
+            "75+"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": false,
+            "labelLimit": 70,
+            "labelPadding": 8
+          }
+        },
+        "y": {
+          "field": "digital_ability",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 150,
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "18-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
+            "75+"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": false,
+            "labelLimit": 70,
+            "labelPadding": 8
+          }
+        },
+        "y": {
+          "field": "digital_ability",
+          "type": "quantitative"
+        },
         "color": {
-          "field": "highlight",
+          "field": "marker",
           "type": "nominal",
-          "title": null,
+          "title": "Age marker",
           "scale": {
             "domain": [
               "Highest",
@@ -85,9 +181,9 @@
               "Lowest"
             ],
             "range": [
-              "#1d4ed8",
+              "#2f6fa7",
               "#93c5fd",
-              "#f97316"
+              "#d86f2a"
             ]
           }
         },
@@ -109,32 +205,85 @@
     {
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 4,
-        "baseline": "middle",
-        "fontSize": 11
+        "dy": -14,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#17212b"
       },
       "encoding": {
         "x": {
-          "field": "digital_ability",
-          "type": "quantitative"
-        },
-        "y": {
           "field": "age_group",
           "type": "ordinal",
           "sort": [
-            "18–34",
-            "35–44",
-            "45–54",
-            "55–64",
-            "65–74",
+            "18-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
             "75+"
-          ]
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": false,
+            "labelLimit": 70,
+            "labelPadding": 8
+          }
+        },
+        "y": {
+          "field": "digital_ability",
+          "type": "quantitative"
         },
         "text": {
           "field": "digital_ability",
           "type": "quantitative",
-          "format": ".2f"
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "age_group": "75+",
+            "digital_ability": 45,
+            "annotation": "Lowest ability"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -14,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#d86f2a",
+        "dy": -18
+      },
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "18-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
+            "75+"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": false,
+            "labelLimit": 70,
+            "labelPadding": 8
+          }
+        },
+        "y": {
+          "field": "digital_ability",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "annotation"
         }
       }
     }
@@ -144,14 +293,31 @@
       "stroke": null
     },
     "axis": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "gridColor": "#dbe4ee",
+      "labelLimit": 240
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
     }
   }
 }

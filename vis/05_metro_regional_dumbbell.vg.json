@@ -2,11 +2,11 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Dumbbell chart comparing ADII score between Metro and Regional Australia.",
   "title": {
-    "text": "Metro Australia scores higher than Regional Australia",
-    "subtitle": "ADII score comparison, 2024"
+    "text": "Metro Australia scores higher than regional Australia",
+    "subtitle": "ADII score comparison, 2024. Dashed line shows the national average."
   },
-  "width": 620,
-  "height": 130,
+  "width": "container",
+  "height": 170,
   "data": {
     "values": [
       {
@@ -38,7 +38,7 @@
           "aggregate": "min",
           "field": "score",
           "type": "quantitative",
-          "title": "ADII score",
+          "title": "ADII score out of 100",
           "scale": {
             "domain": [
               65,
@@ -66,12 +66,29 @@
         },
         "x": {
           "field": "score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              65,
+              78
+            ]
+          },
+          "title": "ADII score out of 100"
         },
         "color": {
           "field": "region",
           "type": "nominal",
-          "title": null
+          "title": "Area type",
+          "scale": {
+            "domain": [
+              "Metro",
+              "Regional"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#d86f2a"
+            ]
+          }
         },
         "tooltip": [
           {
@@ -102,7 +119,14 @@
         },
         "x": {
           "field": "score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              65,
+              78
+            ]
+          },
+          "title": "ADII score out of 100"
         },
         "text": {
           "field": "region",
@@ -111,7 +135,17 @@
         "color": {
           "field": "region",
           "type": "nominal",
-          "legend": null
+          "title": "Area type",
+          "scale": {
+            "domain": [
+              "Metro",
+              "Regional"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#d86f2a"
+            ]
+          }
         }
       }
     },
@@ -128,7 +162,14 @@
         },
         "x": {
           "field": "score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              65,
+              78
+            ]
+          },
+          "title": "ADII score out of 100"
         },
         "text": {
           "field": "score",
@@ -138,7 +179,56 @@
         "color": {
           "field": "region",
           "type": "nominal",
-          "legend": null
+          "title": "Area type",
+          "scale": {
+            "domain": [
+              "Metro",
+              "Regional"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#d86f2a"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "score": 72.53,
+            "y": "Metro vs Regional",
+            "label": "5.92 Metro-regional gap"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": -48,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#17212b",
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              65,
+              78
+            ]
+          },
+          "title": "ADII score out of 100"
+        },
+        "y": {
+          "field": "y",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "label"
         }
       }
     },
@@ -162,7 +252,14 @@
       "encoding": {
         "x": {
           "field": "score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              65,
+              78
+            ]
+          },
+          "title": "ADII score out of 100"
         }
       }
     },
@@ -172,20 +269,28 @@
           {
             "score": 73.56,
             "y": "Metro vs Regional",
-            "label": "National average"
+            "label": "National ADII average 73.56"
           }
         ]
       },
       "mark": {
         "type": "text",
-        "dy": 48,
+        "dy": 60,
         "fontSize": 11,
+        "align": "center",
         "color": "#64748b"
       },
       "encoding": {
         "x": {
           "field": "score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              65,
+              78
+            ]
+          },
+          "title": "ADII score out of 100"
         },
         "y": {
           "field": "y",
@@ -204,12 +309,29 @@
     "axis": {
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "gridColor": "#dbe4ee",
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "labelLimit": 320
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     }
   }
 }

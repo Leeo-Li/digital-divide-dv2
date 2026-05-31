@@ -1,79 +1,210 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Lowest Affordability scores among groups, 2024.",
+  "description": "Diverging risk-driver plot comparing affordability and digital ability shortfalls for selected high-risk groups, 2024.",
   "title": {
-    "text": "The lowest affordability scores reveal who is most at risk",
-    "subtitle": "Selected lowest-scoring groups, 2024; dashed line = national affordability average 70.25"
+    "text": "Low-income households are most at risk overall",
+    "subtitle": "Income Q1 has the largest shortfall: 35.8 points below the national affordability average. Older Australians and lower-education groups show the largest ability barriers."
   },
-  "width": 680,
+  "width": "container",
   "height": {
-    "step": 34
+    "step": 38
   },
   "data": {
     "values": [
       {
         "group": "Income Q1 (<$41.6k)",
-        "category": "Income",
-        "affordability": 34.45
+        "driver": "Cost pressure",
+        "score": 34.45,
+        "national_average": 70.25,
+        "gap": 35.8,
+        "signed_gap": -35.8,
+        "gap_label": "35.8"
       },
       {
-        "group": "Rent from public housing authority",
-        "category": "Housing",
-        "affordability": 44.29
+        "group": "Income Q1 (<$41.6k)",
+        "driver": "Skills and confidence",
+        "score": 58.58,
+        "national_average": 73.6,
+        "gap": 15.02,
+        "signed_gap": 15.02,
+        "gap_label": "15.0"
       },
       {
         "group": "75+",
-        "category": "Age",
-        "affordability": 51.06
+        "driver": "Cost pressure",
+        "score": 51.06,
+        "national_average": 70.25,
+        "gap": 19.19,
+        "signed_gap": -19.19,
+        "gap_label": "19.2"
+      },
+      {
+        "group": "75+",
+        "driver": "Skills and confidence",
+        "score": 41.52,
+        "national_average": 73.6,
+        "gap": 32.08,
+        "signed_gap": 32.08,
+        "gap_label": "32.1"
+      },
+      {
+        "group": "Other education",
+        "driver": "Cost pressure",
+        "score": 59.34,
+        "national_average": 70.25,
+        "gap": 10.91,
+        "signed_gap": -10.91,
+        "gap_label": "10.9"
+      },
+      {
+        "group": "Other education",
+        "driver": "Skills and confidence",
+        "score": 47.13,
+        "national_average": 73.6,
+        "gap": 26.47,
+        "signed_gap": 26.47,
+        "gap_label": "26.5"
+      },
+      {
+        "group": "Public housing renters",
+        "driver": "Cost pressure",
+        "score": 44.29,
+        "national_average": 70.25,
+        "gap": 25.96,
+        "signed_gap": -25.96,
+        "gap_label": "26.0"
+      },
+      {
+        "group": "Public housing renters",
+        "driver": "Skills and confidence",
+        "score": 69.11,
+        "national_average": 73.6,
+        "gap": 4.49,
+        "signed_gap": 4.49,
+        "gap_label": "4.5"
+      },
+      {
+        "group": "Did not complete secondary",
+        "driver": "Cost pressure",
+        "score": 54.6,
+        "national_average": 70.25,
+        "gap": 15.65,
+        "signed_gap": -15.65,
+        "gap_label": "15.6"
+      },
+      {
+        "group": "Did not complete secondary",
+        "driver": "Skills and confidence",
+        "score": 54.44,
+        "national_average": 73.6,
+        "gap": 19.16,
+        "signed_gap": 19.16,
+        "gap_label": "19.1"
+      },
+      {
+        "group": "First Nations very remote",
+        "driver": "Cost pressure",
+        "score": 59.21,
+        "national_average": 70.25,
+        "gap": 11.04,
+        "signed_gap": -11.04,
+        "gap_label": "11.0"
+      },
+      {
+        "group": "First Nations very remote",
+        "driver": "Skills and confidence",
+        "score": 56.79,
+        "national_average": 73.6,
+        "gap": 16.81,
+        "signed_gap": 16.81,
+        "gap_label": "16.8"
       },
       {
         "group": "Receives income support",
-        "category": "Income support",
-        "affordability": 53.67
+        "driver": "Cost pressure",
+        "score": 53.67,
+        "national_average": 70.25,
+        "gap": 16.58,
+        "signed_gap": -16.58,
+        "gap_label": "16.6"
       },
       {
-        "group": "Did not complete secondary school",
-        "category": "Education",
-        "affordability": 54.6
+        "group": "Receives income support",
+        "driver": "Skills and confidence",
+        "score": 62.34,
+        "national_average": 73.6,
+        "gap": 11.26,
+        "signed_gap": 11.26,
+        "gap_label": "11.2"
       },
       {
-        "group": "First Nations (remote)",
-        "category": "First Nations",
-        "affordability": 54.87
+        "group": "First Nations remote",
+        "driver": "Cost pressure",
+        "score": 54.87,
+        "national_average": 70.25,
+        "gap": 15.38,
+        "signed_gap": -15.38,
+        "gap_label": "15.4"
       },
       {
-        "group": "First Nations (inner regional)",
-        "category": "First Nations",
-        "affordability": 54.89
-      },
-      {
-        "group": "Not in labour force",
-        "category": "Employment",
-        "affordability": 55.96
+        "group": "First Nations remote",
+        "driver": "Skills and confidence",
+        "score": 61.45,
+        "national_average": 73.6,
+        "gap": 12.15,
+        "signed_gap": 12.15,
+        "gap_label": "12.1"
       },
       {
         "group": "Single person",
-        "category": "Household",
-        "affordability": 56.49
+        "driver": "Cost pressure",
+        "score": 56.49,
+        "national_average": 70.25,
+        "gap": 13.76,
+        "signed_gap": -13.76,
+        "gap_label": "13.8"
       },
       {
-        "group": "Unemployed",
-        "category": "Employment",
-        "affordability": 56.56
+        "group": "Single person",
+        "driver": "Skills and confidence",
+        "score": 64.73,
+        "national_average": 73.6,
+        "gap": 8.87,
+        "signed_gap": 8.87,
+        "gap_label": "8.9"
       },
       {
         "group": "People with disability",
-        "category": "Disability",
-        "affordability": 57.19
+        "driver": "Cost pressure",
+        "score": 57.19,
+        "national_average": 70.25,
+        "gap": 13.06,
+        "signed_gap": -13.06,
+        "gap_label": "13.1"
+      },
+      {
+        "group": "People with disability",
+        "driver": "Skills and confidence",
+        "score": 62.53,
+        "national_average": 73.6,
+        "gap": 11.07,
+        "signed_gap": 11.07,
+        "gap_label": "11.1"
       }
     ]
   },
+  "transform": [
+    {
+      "calculate": "0",
+      "as": "zero"
+    }
+  ],
   "layer": [
     {
       "data": {
         "values": [
           {
-            "score": 70.25
+            "x": 0
           }
         ]
       },
@@ -83,42 +214,140 @@
           4,
           4
         ],
+        "strokeWidth": 2,
         "color": "#64748b"
       },
       "encoding": {
         "x": {
-          "field": "score",
-          "type": "quantitative"
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -38,
+              38
+            ]
+          }
         }
       }
     },
     {
       "mark": {
-        "type": "bar",
-        "cornerRadiusEnd": 4
+        "type": "rule",
+        "strokeWidth": 4,
+        "opacity": 0.45
       },
       "encoding": {
         "x": {
-          "field": "affordability",
+          "field": "zero",
           "type": "quantitative",
-          "title": "Affordability score",
+          "title": "Left: affordability/cost pressure | Right: digital ability/skills barrier",
           "scale": {
             "domain": [
+              -38,
+              38
+            ]
+          },
+          "axis": {
+            "values": [
+              -35,
+              -20,
               0,
-              100
+              20,
+              35
+            ]
+          }
+        },
+        "x2": {
+          "field": "signed_gap"
+        },
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "title": null,
+          "sort": [
+            "Income Q1 (<$41.6k)",
+            "75+",
+            "Other education",
+            "Public housing renters",
+            "Did not complete secondary",
+            "First Nations very remote",
+            "Receives income support",
+            "First Nations remote",
+            "Single person",
+            "People with disability"
+          ],
+          "axis": {
+            "labelLimit": 260,
+            "labelPadding": 8
+          }
+        },
+        "color": {
+          "field": "driver",
+          "type": "nominal",
+          "title": "Risk reason",
+          "scale": {
+            "domain": [
+              "Cost pressure",
+              "Skills and confidence"
+            ],
+            "range": [
+              "#d86f2a",
+              "#2f6fa7"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 190,
+        "stroke": "white",
+        "strokeWidth": 2,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "x": {
+          "field": "signed_gap",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -38,
+              38
             ]
           }
         },
         "y": {
           "field": "group",
           "type": "nominal",
-          "title": null,
-          "sort": "x"
+          "sort": [
+            "Income Q1 (<$41.6k)",
+            "75+",
+            "Other education",
+            "Public housing renters",
+            "Did not complete secondary",
+            "First Nations very remote",
+            "Receives income support",
+            "First Nations remote",
+            "Single person",
+            "People with disability"
+          ]
         },
         "color": {
-          "field": "category",
+          "field": "driver",
           "type": "nominal",
-          "title": "Group type"
+          "title": "Risk reason",
+          "scale": {
+            "domain": [
+              "Cost pressure",
+              "Skills and confidence"
+            ],
+            "range": [
+              "#d86f2a",
+              "#2f6fa7"
+            ]
+          }
         },
         "tooltip": [
           {
@@ -127,41 +356,122 @@
             "title": "Group"
           },
           {
-            "field": "category",
+            "field": "driver",
             "type": "nominal",
-            "title": "Type"
+            "title": "Risk reason"
           },
           {
-            "field": "affordability",
+            "field": "score",
             "type": "quantitative",
-            "title": "Affordability",
+            "title": "Group score",
+            "format": ".2f"
+          },
+          {
+            "field": "national_average",
+            "type": "quantitative",
+            "title": "National average",
+            "format": ".2f"
+          },
+          {
+            "field": "gap",
+            "type": "quantitative",
+            "title": "Points below average",
             "format": ".2f"
           }
         ]
       }
     },
     {
+      "transform": [
+        {
+          "filter": "datum.driver == 'Cost pressure'"
+        }
+      ],
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 4,
+        "align": "right",
+        "dx": -9,
         "baseline": "middle",
-        "fontSize": 10
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#17212b"
       },
       "encoding": {
         "x": {
-          "field": "affordability",
-          "type": "quantitative"
+          "field": "signed_gap",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -38,
+              38
+            ]
+          }
         },
         "y": {
           "field": "group",
           "type": "nominal",
-          "sort": "x"
+          "sort": [
+            "Income Q1 (<$41.6k)",
+            "75+",
+            "Other education",
+            "Public housing renters",
+            "Did not complete secondary",
+            "First Nations very remote",
+            "Receives income support",
+            "First Nations remote",
+            "Single person",
+            "People with disability"
+          ]
         },
         "text": {
-          "field": "affordability",
+          "field": "gap_label"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.driver == 'Skills and confidence'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "baseline": "middle",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#17212b"
+      },
+      "encoding": {
+        "x": {
+          "field": "signed_gap",
           "type": "quantitative",
-          "format": ".2f"
+          "scale": {
+            "domain": [
+              -38,
+              38
+            ]
+          }
+        },
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "Income Q1 (<$41.6k)",
+            "75+",
+            "Other education",
+            "Public housing renters",
+            "Did not complete secondary",
+            "First Nations very remote",
+            "Receives income support",
+            "First Nations remote",
+            "Single person",
+            "People with disability"
+          ]
+        },
+        "text": {
+          "field": "gap_label"
         }
       }
     }
@@ -171,14 +481,38 @@
       "stroke": null
     },
     "axis": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "gridColor": "#dbe4ee",
+      "domain": false,
+      "labelLimit": 320
+    },
+    "axisX": {
+      "grid": true
+    },
+    "axisY": {
+      "grid": true
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     }
   }
 }

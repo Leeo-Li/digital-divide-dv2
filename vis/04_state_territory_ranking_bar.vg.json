@@ -3,58 +3,50 @@
   "description": "ADII score ranking by Australian state and territory, 2024.",
   "title": {
     "text": "ACT ranks highest, Tasmania lowest",
-    "subtitle": "ADII score by state and territory, 2024"
+    "subtitle": "ADII score by state and territory, 2024. Dashed line marks the national average of 73.56."
   },
-  "width": 620,
+  "width": "container",
   "height": {
     "step": 34
   },
   "data": {
     "values": [
       {
-        "state_code": "ACT",
         "state_name": "Australian Capital Territory",
         "adii_score": 79.52,
         "highlight": "Highest"
       },
       {
-        "state_code": "VIC",
         "state_name": "Victoria",
         "adii_score": 74.06,
         "highlight": "Other"
       },
       {
-        "state_code": "NSW",
         "state_name": "New South Wales",
         "adii_score": 73.98,
         "highlight": "Other"
       },
       {
-        "state_code": "WA",
         "state_name": "Western Australia",
         "adii_score": 73.89,
         "highlight": "Other"
       },
       {
-        "state_code": "QLD",
         "state_name": "Queensland",
         "adii_score": 72.88,
         "highlight": "Other"
       },
       {
-        "state_code": "NT",
         "state_name": "Northern Territory",
         "adii_score": 72.47,
         "highlight": "Other"
       },
       {
-        "state_code": "SA",
         "state_name": "South Australia",
         "adii_score": 71.3,
         "highlight": "Other"
       },
       {
-        "state_code": "TAS",
         "state_name": "Tasmania",
         "adii_score": 69.38,
         "highlight": "Lowest"
@@ -62,6 +54,36 @@
     ]
   },
   "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "adii_score": 73.56
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 2,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "adii_score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        }
+      }
+    },
     {
       "mark": {
         "type": "bar",
@@ -83,12 +105,15 @@
           "field": "state_name",
           "type": "nominal",
           "title": null,
-          "sort": "-x"
+          "sort": "-x",
+          "axis": {
+            "labelLimit": 300
+          }
         },
         "color": {
           "field": "highlight",
           "type": "nominal",
-          "title": null,
+          "title": "Rank marker",
           "scale": {
             "domain": [
               "Highest",
@@ -96,9 +121,9 @@
               "Lowest"
             ],
             "range": [
-              "#1d4ed8",
+              "#2f6fa7",
               "#93c5fd",
-              "#f97316"
+              "#d86f2a"
             ]
           }
         },
@@ -133,7 +158,10 @@
         "y": {
           "field": "state_name",
           "type": "nominal",
-          "sort": "-x"
+          "sort": "-x",
+          "axis": {
+            "labelLimit": 300
+          }
         },
         "text": {
           "field": "adii_score",
@@ -150,12 +178,29 @@
     "axis": {
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "gridColor": "#dbe4ee",
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "labelLimit": 320
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     }
   }
 }

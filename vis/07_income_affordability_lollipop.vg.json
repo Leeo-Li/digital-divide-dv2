@@ -1,64 +1,145 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Affordability score by income quintile, 2024.",
+  "description": "Line and point chart showing affordability score across income quintiles, 2024.",
   "title": {
-    "text": "Affordability is the clearest income-based divide",
-    "subtitle": "Affordability score by household income group, 2024"
+    "text": "Affordability rises steeply with income",
+    "subtitle": "Affordability score by household income group, 2024. Dashed line shows the national affordability average."
   },
-  "width": 620,
-  "height": {
-    "step": 42
-  },
+  "width": "container",
+  "height": 360,
   "data": {
     "values": [
       {
-        "income_group": "Income Q1 (<$41.6k)",
-        "affordability": 34.45
+        "income_group": "Q1 (<$41.6k)",
+        "affordability": 34.45,
+        "income_marker": "Lowest income"
       },
       {
-        "income_group": "Income Q2 ($41.6k–$78k)",
-        "affordability": 60.26
+        "income_group": "Q2 ($41.6k-$78k)",
+        "affordability": 60.26,
+        "income_marker": "Middle income"
       },
       {
-        "income_group": "Income Q3 ($78k–$104k)",
-        "affordability": 74.45
+        "income_group": "Q3 ($78k-$104k)",
+        "affordability": 74.45,
+        "income_marker": "Middle income"
       },
       {
-        "income_group": "Income Q4 ($104k–$182k)",
-        "affordability": 88.13
+        "income_group": "Q4 ($104k-$182k)",
+        "affordability": 88.13,
+        "income_marker": "Middle income"
       },
       {
-        "income_group": "Income Q5 ($182k+)",
-        "affordability": 99.23
+        "income_group": "Q5 ($182k+)",
+        "affordability": 99.23,
+        "income_marker": "Highest income"
       }
     ]
   },
   "layer": [
     {
+      "data": {
+        "values": [
+          {
+            "average": 70.25
+          }
+        ]
+      },
       "mark": {
         "type": "rule",
-        "strokeWidth": 3,
-        "color": "#cbd5e1"
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 2,
+        "color": "#64748b"
       },
       "encoding": {
         "y": {
+          "field": "average",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "income_group": "Q3 ($78k-$104k)",
+            "average": 70.25,
+            "label": "National affordability average 70.25"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -10,
+        "fontSize": 12,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
           "field": "income_group",
           "type": "ordinal",
-          "title": null,
           "sort": [
-            "Income Q1 (<$41.6k)",
-            "Income Q2 ($41.6k–$78k)",
-            "Income Q3 ($78k–$104k)",
-            "Income Q4 ($104k–$182k)",
-            "Income Q5 ($182k+)"
-          ]
+            "Q1 (<$41.6k)",
+            "Q2 ($41.6k-$78k)",
+            "Q3 ($78k-$104k)",
+            "Q4 ($104k-$182k)",
+            "Q5 ($182k+)"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": false,
+            "labelLimit": 150
+          }
         },
-        "x": {
-          "value": 0
-        },
-        "x2": {
-          "field": "affordability",
+        "y": {
+          "field": "average",
           "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeWidth": 4,
+        "color": "#2f6fa7"
+      },
+      "encoding": {
+        "x": {
+          "field": "income_group",
+          "type": "ordinal",
+          "title": "Household income group",
+          "sort": [
+            "Q1 (<$41.6k)",
+            "Q2 ($41.6k-$78k)",
+            "Q3 ($78k-$104k)",
+            "Q4 ($104k-$182k)",
+            "Q5 ($182k+)"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelLimit": 150,
+            "labelOverlap": false
+          }
+        },
+        "y": {
+          "field": "affordability",
+          "type": "quantitative",
+          "title": "Affordability score",
+          "scale": {
+            "domain": [
+              25,
+              105
+            ]
+          }
         }
       }
     },
@@ -66,35 +147,47 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 190
+        "size": 170,
+        "stroke": "white",
+        "strokeWidth": 2
       },
       "encoding": {
-        "y": {
+        "x": {
           "field": "income_group",
           "type": "ordinal",
           "sort": [
-            "Income Q1 (<$41.6k)",
-            "Income Q2 ($41.6k–$78k)",
-            "Income Q3 ($78k–$104k)",
-            "Income Q4 ($104k–$182k)",
-            "Income Q5 ($182k+)"
-          ]
-        },
-        "x": {
-          "field": "affordability",
-          "type": "quantitative",
-          "title": "Affordability score",
-          "scale": {
-            "domain": [
-              0,
-              100
-            ]
+            "Q1 (<$41.6k)",
+            "Q2 ($41.6k-$78k)",
+            "Q3 ($78k-$104k)",
+            "Q4 ($104k-$182k)",
+            "Q5 ($182k+)"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": false,
+            "labelLimit": 150
           }
         },
+        "y": {
+          "field": "affordability",
+          "type": "quantitative"
+        },
         "color": {
-          "field": "income_group",
+          "field": "income_marker",
           "type": "nominal",
-          "legend": null
+          "title": "Income marker",
+          "scale": {
+            "domain": [
+              "Lowest income",
+              "Middle income",
+              "Highest income"
+            ],
+            "range": [
+              "#d86f2a",
+              "#93c5fd",
+              "#2f6fa7"
+            ]
+          }
         },
         "tooltip": [
           {
@@ -114,31 +207,36 @@
     {
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 8,
-        "baseline": "middle",
-        "fontSize": 11
+        "dy": -14,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#17212b"
       },
       "encoding": {
-        "y": {
+        "x": {
           "field": "income_group",
           "type": "ordinal",
           "sort": [
-            "Income Q1 (<$41.6k)",
-            "Income Q2 ($41.6k–$78k)",
-            "Income Q3 ($78k–$104k)",
-            "Income Q4 ($104k–$182k)",
-            "Income Q5 ($182k+)"
-          ]
+            "Q1 (<$41.6k)",
+            "Q2 ($41.6k-$78k)",
+            "Q3 ($78k-$104k)",
+            "Q4 ($104k-$182k)",
+            "Q5 ($182k+)"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": false,
+            "labelLimit": 150
+          }
         },
-        "x": {
+        "y": {
           "field": "affordability",
           "type": "quantitative"
         },
         "text": {
           "field": "affordability",
           "type": "quantitative",
-          "format": ".2f"
+          "format": ".1f"
         }
       }
     }
@@ -148,14 +246,31 @@
       "stroke": null
     },
     "axis": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "gridColor": "#dbe4ee",
+      "labelLimit": 240
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
     }
   }
 }

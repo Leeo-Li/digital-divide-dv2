@@ -3,11 +3,11 @@
   "description": "Selected disadvantaged groups by Digital Ability score, 2024.",
   "title": {
     "text": "Digital disadvantage overlaps with social disadvantage",
-    "subtitle": "Selected groups by Digital Ability score, 2024; dashed line = national average 73.58"
+    "subtitle": "Selected groups by Digital Ability score, 2024. Dashed line shows the national average of 73.60."
   },
-  "width": 620,
+  "width": "container",
   "height": {
-    "step": 34
+    "step": 40
   },
   "data": {
     "values": [
@@ -73,7 +73,7 @@
       "data": {
         "values": [
           {
-            "score": 73.58
+            "score": 73.6
           }
         ]
       },
@@ -88,7 +88,53 @@
       "encoding": {
         "x": {
           "field": "score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              45,
+              76
+            ]
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "score": 73.6,
+            "group": "Rent from public housing authority",
+            "label": "Digital Ability average 73.60"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": -18,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              40,
+              80
+            ]
+          }
+        },
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": "x"
+        },
+        "text": {
+          "field": "label"
         }
       }
     },
@@ -96,7 +142,7 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 130
+        "size": 190
       },
       "encoding": {
         "x": {
@@ -114,12 +160,39 @@
           "field": "group",
           "type": "nominal",
           "title": null,
-          "sort": "x"
+          "sort": "x",
+          "axis": {
+            "labelLimit": 360
+          }
         },
         "color": {
           "field": "category",
           "type": "nominal",
-          "title": "Group type"
+          "title": "Group type",
+          "scale": {
+            "domain": [
+              "Education",
+              "First Nations",
+              "Income",
+              "Income support",
+              "Employment",
+              "Disability",
+              "Location",
+              "Household",
+              "Housing"
+            ],
+            "range": [
+              "#d86f2a",
+              "#b85f40",
+              "#8b6f47",
+              "#6f7f95",
+              "#93c5fd",
+              "#7aa6a1",
+              "#6686b8",
+              "#9a8db5",
+              "#2f6fa7"
+            ]
+          }
         },
         "tooltip": [
           {
@@ -152,12 +225,21 @@
       "encoding": {
         "x": {
           "field": "score",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              45,
+              76
+            ]
+          }
         },
         "y": {
           "field": "group",
           "type": "nominal",
-          "sort": "x"
+          "sort": "x",
+          "axis": {
+            "labelLimit": 360
+          }
         },
         "text": {
           "field": "score",
@@ -174,12 +256,29 @@
     "axis": {
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "gridColor": "#dbe4ee",
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "labelLimit": 320
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     }
   }
 }

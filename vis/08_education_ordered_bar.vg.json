@@ -1,43 +1,111 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Digital Ability score by education level, 2024.",
+  "description": "Dot plot showing Digital Ability score by education level, 2024.",
   "title": {
-    "text": "Education level is linked to digital ability",
-    "subtitle": "Digital Ability score by education level, 2024"
+    "text": "Education is linked to digital ability",
+    "subtitle": "Digital Ability score by education level, 2024. Dashed line shows the national Digital Ability score."
   },
-  "width": 620,
+  "width": "container",
   "height": {
-    "step": 42
+    "step": 48
   },
   "data": {
     "values": [
       {
         "education": "Other education",
-        "digital_ability": 47.13
+        "digital_ability": 47.13,
+        "marker": "Below national ability"
       },
       {
         "education": "Did not complete secondary school",
-        "digital_ability": 54.44
+        "digital_ability": 54.44,
+        "marker": "Below national ability"
       },
       {
         "education": "Completed secondary school",
-        "digital_ability": 70.43
+        "digital_ability": 70.43,
+        "marker": "Below national ability"
       },
       {
         "education": "Certificate / diploma",
-        "digital_ability": 73.57
+        "digital_ability": 73.57,
+        "marker": "Near national ability"
       },
       {
         "education": "Bachelor and above",
-        "digital_ability": 82.71
+        "digital_ability": 82.71,
+        "marker": "Above national ability"
       }
     ]
   },
   "layer": [
     {
+      "data": {
+        "values": [
+          {
+            "score": 73.60
+          }
+        ]
+      },
       "mark": {
-        "type": "bar",
-        "cornerRadiusEnd": 4
+        "type": "rule",
+        "strokeDash": [4, 4],
+        "strokeWidth": 2,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [45, 86]
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "score": 73.60,
+            "education": "Certificate / diploma",
+            "label": "National ability 73.60"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -18,
+        "fontSize": 12,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [45, 86]
+          }
+        },
+        "y": {
+          "field": "education",
+          "type": "nominal",
+          "sort": ["Other education", "Did not complete secondary school", "Completed secondary school", "Certificate / diploma", "Bachelor and above"]
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 230,
+        "stroke": "white",
+        "strokeWidth": 2
       },
       "encoding": {
         "x": {
@@ -45,24 +113,28 @@
           "type": "quantitative",
           "title": "Digital Ability score",
           "scale": {
-            "domain": [
-              0,
-              100
-            ]
+            "domain": [45, 86]
+          },
+          "axis": {
+            "tickCount": 9
           }
         },
         "y": {
           "field": "education",
           "type": "nominal",
           "title": null,
-          "sort": "x"
+          "sort": ["Other education", "Did not complete secondary school", "Completed secondary school", "Certificate / diploma", "Bachelor and above"],
+          "axis": {
+            "labelLimit": 340
+          }
         },
         "color": {
-          "field": "digital_ability",
-          "type": "quantitative",
-          "title": "Score",
+          "field": "marker",
+          "type": "nominal",
+          "title": "Position vs national ability",
           "scale": {
-            "scheme": "blues"
+            "domain": ["Below national ability", "Near national ability", "Above national ability"],
+            "range": ["#d86f2a", "#93c5fd", "#2f6fa7"]
           }
         },
         "tooltip": [
@@ -84,19 +156,24 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 4,
+        "dx": 9,
         "baseline": "middle",
-        "fontSize": 11
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#17212b"
       },
       "encoding": {
         "x": {
           "field": "digital_ability",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {
+            "domain": [45, 86]
+          }
         },
         "y": {
           "field": "education",
           "type": "nominal",
-          "sort": "x"
+          "sort": ["Other education", "Did not complete secondary school", "Completed secondary school", "Certificate / diploma", "Bachelor and above"]
         },
         "text": {
           "field": "digital_ability",
@@ -111,14 +188,31 @@
       "stroke": null
     },
     "axis": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "gridColor": "#dbe4ee",
+      "labelLimit": 340
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
     }
   }
 }

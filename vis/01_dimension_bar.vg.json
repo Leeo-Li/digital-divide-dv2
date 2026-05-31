@@ -2,52 +2,197 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "National digital inclusion dimensions in Australia, 2024",
   "title": {
-    "text": "National digital inclusion looks relatively strong",
-    "subtitle": "Access, affordability and digital ability all score around the 70s in 2024"
+    "text": "Affordability is the weakest part of digital inclusion",
+    "subtitle": "ADII dimension scores, 2024. Higher scores mean stronger digital inclusion."
   },
-  "width": 520,
-  "height": {"step": 50},
+  "width": "container",
+  "height": {
+    "step": 54
+  },
   "data": {
     "values": [
-      {"dimension": "Access", "score": 76.82},
-      {"dimension": "Affordability", "score": 70.25},
-      {"dimension": "Digital Ability", "score": 73.6}
-    ]
-  },
-  "mark": {"type": "bar", "cornerRadiusEnd": 4, "height": {"band": 0.5}},
-  "encoding": {
-    "y": {
-      "field": "dimension",
-      "type": "nominal",
-      "title": null,
-      "sort": ["Access", "Digital Ability", "Affordability"],
-      "scale": {"padding": 0.25},
-      "axis": {
-        "grid": false,
-        "domain": false,
-        "ticks": false,
-        "labelAlign": "left",
-        "labelBaseline": "middle",
-        "labelPadding": -5,
-        "labelOffset": -15
-      }
-    },
-    "x": {
-      "field": "score",
-      "type": "quantitative",
-      "title": "Score out of 100",
-      "scale": {"domain": [0, 100]},
-      "axis": {"grid": true}
-    },
-    "tooltip": [
-      {"field": "dimension", "type": "nominal", "title": "Dimension"},
       {
-        "field": "score",
-        "type": "quantitative",
-        "title": "Score",
-        "format": ".2f"
+        "dimension": "Access",
+        "score": 76.82,
+        "status": "Stronger"
+      },
+      {
+        "dimension": "Digital Ability",
+        "score": 73.6,
+        "status": "Middle"
+      },
+      {
+        "dimension": "Affordability",
+        "score": 70.25,
+        "status": "Weakest"
       }
     ]
   },
-  "config": {}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "gridColor": "#dbe4ee",
+      "labelLimit": 320
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
+    },
+    "title": {
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4,
+        "height": {
+          "band": 0.55
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "title": null,
+          "sort": [
+            "Access",
+            "Digital Ability",
+            "Affordability"
+          ],
+          "axis": {
+            "labelLimit": 180
+          }
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "title": "ADII score out of 100",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "color": {
+          "field": "status",
+          "type": "nominal",
+          "title": "Dimension status",
+          "scale": {
+            "domain": [
+              "Stronger",
+              "Middle",
+              "Weakest"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#93c5fd",
+              "#d86f2a"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "dimension",
+            "type": "nominal",
+            "title": "Dimension"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Score",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "baseline": "middle",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#17212b"
+      },
+      "encoding": {
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": [
+            "Access",
+            "Digital Ability",
+            "Affordability"
+          ]
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "score",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "dimension": "Affordability",
+            "score": 74,
+            "label": "6.57 points below access"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#d86f2a"
+      },
+      "encoding": {
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": [
+            "Access",
+            "Digital Ability",
+            "Affordability"
+          ]
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
 }

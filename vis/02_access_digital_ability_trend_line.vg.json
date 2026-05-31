@@ -3,9 +3,9 @@
   "description": "Access and Digital Ability scores over time from ADII exports.",
   "title": {
     "text": "Access and digital ability improved over time",
-    "subtitle": "National scores, 2020–2024. 2023 is not included in the exported ADII data."
+    "subtitle": "National scores, 2020-2024. 2023 is not included in the exported ADII data."
   },
-  "width": 620,
+  "width": "container",
   "height": 320,
   "data": {
     "values": [
@@ -84,7 +84,17 @@
         "color": {
           "field": "measure",
           "type": "nominal",
-          "title": "Measure"
+          "title": "Dimension",
+          "scale": {
+            "domain": [
+              "Access",
+              "Digital Ability"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#d86f2a"
+            ]
+          }
         },
         "tooltip": [
           {
@@ -130,7 +140,17 @@
         "color": {
           "field": "measure",
           "type": "nominal",
-          "legend": null
+          "title": "Dimension",
+          "scale": {
+            "domain": [
+              "Access",
+              "Digital Ability"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#d86f2a"
+            ]
+          }
         },
         "tooltip": [
           {
@@ -151,6 +171,65 @@
           }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2024,
+            "measure": "Access",
+            "score": 76.82,
+            "label": "Access 76.82"
+          },
+          {
+            "year": 2024,
+            "measure": "Digital Ability",
+            "score": 73.6,
+            "label": "Digital Ability 73.60"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            2020,
+            2021,
+            2022,
+            2024
+          ]
+        },
+        "y": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "field": "measure",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Access",
+              "Digital Ability"
+            ],
+            "range": [
+              "#2f6fa7",
+              "#d86f2a"
+            ]
+          }
+        }
+      }
     }
   ],
   "config": {
@@ -160,12 +239,29 @@
     "axis": {
       "labelFontSize": 12,
       "titleFontSize": 13,
-      "gridColor": "#e5e7eb"
+      "gridColor": "#dbe4ee",
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelColor": "#17212b",
+      "titleColor": "#17212b",
+      "labelLimit": 320
     },
     "title": {
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "anchor": "start"
+      "fontSize": 18,
+      "subtitleFontSize": 13,
+      "anchor": "start",
+      "font": "Space Grotesk",
+      "subtitleFont": "IBM Plex Sans",
+      "color": "#17212b",
+      "subtitleColor": "#486178"
+    },
+    "legend": {
+      "labelFont": "IBM Plex Sans",
+      "titleFont": "IBM Plex Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "symbolSize": 110,
+      "orient": "bottom"
     }
   }
 }
